@@ -176,7 +176,7 @@ If ```params[:direction]``` is missing, the sort table default direction will be
 A ```SortColumn``` represents the current sort column. It has the following attributes:
 
 - ```order```: The order that can be passed to an ActiveRecord order method. ```YourModel.order(sort_column.order)```
-- ```column```: The sort column. Corresponds to a [sort column definition](#SortColumnDefinition) key.
+- ```column```: The sort column. Corresponds to a [sort column definition](#sort_column_definitions) key.
 - ```direction```: The sort direction, 'asc' or 'desc'.
 
 Generally, a user of ```SortColumn``` will only use the ```order``` attribute. The other attributes are used by helper methods.
