@@ -1,3 +1,7 @@
+# Under Development
+
+This gem is currently under development. Extracting code from an application.
+
 # Sortable Column by [Caselle](http://www.caselle.com/)
 
 The sortable-column gem allows you to sort table columns similar to [RailsCasts #228 Sortable Table Columns](http://railscasts.com/episodes/228-sortable-table-columns).
