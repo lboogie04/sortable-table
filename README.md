@@ -180,3 +180,7 @@ A ```SortColumn``` represents the current sort column. It has the following attr
 - ```direction```: The sort direction, 'asc' or 'desc'.
 
 Generally, a user of ```SortColumn``` will only use the ```order``` attribute. The other attributes are used by helper methods.
+
+## License
+
+sortable-column is available under the MIT license. See the LICENSE file for more info.
