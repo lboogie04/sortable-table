@@ -8,13 +8,13 @@ Rather than adding helper methods to a controller, sortable-column creates a sor
 2. The sorting logic is not duplicated across controllers, and controllers don't have to define helper methods.
 3. It makes it easier for multiple tables on a page to have sortable columns.
 
-# Installing
+## Installing
 
 ```ruby
 gem 'sortable-column', github: 'caselle/sortable-column'
 ```
 
-# Configuration
+## Configuration
 
 Using sort column involves the following steps:
 
@@ -25,7 +25,7 @@ Using sort column involves the following steps:
 5. Use the ```sort_by``` helper, to add links to the table header row which allow the table to be re-sorted by those columns.
 6. Use the ```hidden_sort_tags``` helper, to keep track of the current sort column and direction.
 
-## Controller
+### Controller
 
 Create sort column definitions which define how each column can be sorted. Create a sort table that holds those sort column definitions as well as optional default sort column information. Then use the sort table to get the current sort column.
 
@@ -51,7 +51,7 @@ end
 
 Make the sort column available to the view, it will be used by the ```sort_by``` helper.
 
-## Helper
+### Helper
 
 Include the ```SortableColumn::Sortable``` module which will make the sort_by helper available to your view. You can include it on the application helper or the helper for your controller.
 
@@ -60,7 +60,7 @@ module ApplicationHelper
   include SortableColumn::Sortable
 ```
 
-## View
+### View
 
 Use the ```hidden_sort_tags``` helper to add some hidden field tags to your view to store the current sort column and direction.
 
@@ -83,7 +83,7 @@ Use the ```sort_by``` helper to add links to columns which you want to sort.
 
 If the column passed to the ```sort_by``` is the current sort column, the sort link it creates will switch the direction that the column is sorted by.
 
-# Sorting Multiple Tables
+## Sorting Multiple Tables
 
 If you have multipe tables to sort on a view, then you'll need to add a prefix to the sorting params for each table. E.g., if you have a foo table and a bar table, instead of just having :sort and :direction params, you would want ```:foo_sort```, ```:foo_direction```, ```:bar_sort```, and ```:bar_direction``` params. In other words, you'll want a table-specific prefix for each param.
 
@@ -107,11 +107,11 @@ Pass ```:prefix``` to the ```sort_by helper```.
 %th= sort_by 'name', title: 'Name', prefix: 'foo_', current_column: @foo_sort_column
 ```
 
-# <a name="sort_column_definitions"></a>Sort Column Definitions
+## <a name="sort_column_definitions"></a>Sort Column Definitions
 
 There are two types of sort column definitions: ```SortColumnDefinition``` and ```SortColumnCustomDefinition```.
 
-## Sort Column Definition
+### Sort Column Definition
 
 ```SortColumnDefinition``` simply allows you to pass the column used to sort. Depending on the sort direction the order will simply be "&lt;column> asc" or "&lt;column> desc".
 
@@ -119,7 +119,7 @@ The column should be have the same casing as the database. E.g., if the column i
 
 The column name is the key used by the [SortTable](#sort_table).
 
-## Sort Column Custom Definition
+### Sort Column Custom Definition
 
 ```SortColumnCustomDefinition``` allows you to specify any custom order for ascending and descending directions. The first parameter passed when creating a ```SortColumnCustomDefinition``` is the "key" used by the [SortTable](#sort_table).
 
@@ -129,11 +129,11 @@ date_sort = SortableColumn::SortColumnCustomDefinition.new('date',
   desc: 'date desc, number desc')
 ```
 
-# <a name="sort_table"></a>Sort Table
+## <a name="sort_table"></a>Sort Table
 
 A ```SortTable``` is used to create the current sort column based on the params passed to the controller action.
 
-## Creation
+### Creation
 
 To create a ```SortTable```, pass in the [sort column definitions](#sort_column_definitions) for the table.
 
@@ -159,7 +159,7 @@ sort_table = SortableColumn::SortTable.new([date_sort, number_sort],
   default_column: 'number', default_direction: :desc)
 ```
 
-## Current Sort Column
+### Current Sort Column
 
 Call the ```sort_column``` SortTable method to get the current sort column.
 
@@ -171,7 +171,7 @@ If ```params[:sort]``` is missing, the sort table default column will be used. I
 
 If ```params[:direction]``` is missing, the sort table default direction will be used.
 
-# Sort Column
+## Sort Column
 
 A ```SortColumn``` represents the current sort column. It has the following attributes:
 
