@@ -1,1 +1,5 @@
 require 'sortable-table/version'
+require 'sortable-table/models/sort_column'
+require 'sortable-table/models/sort_column_custom_definition'
+require 'sortable-table/models/sort_column_definition'
+require 'sortable-table/models/sort_table'
