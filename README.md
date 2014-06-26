@@ -2,11 +2,11 @@
 
 This gem is currently under development. Extracting code from an application.
 
-# Sortable Column by [Caselle](http://www.caselle.com/)
+# Sortable Table by [Caselle](http://www.caselle.com/)
 
-The sortable-column gem allows you to sort table columns similar to [RailsCasts #228 Sortable Table Columns](http://railscasts.com/episodes/228-sortable-table-columns).
+The sortable-table gem allows you to sort table columns similar to [RailsCasts #228 Sortable Table Columns](http://railscasts.com/episodes/228-sortable-table-columns).
 
-Rather than adding helper methods to a controller, sortable-column creates a sort column object. This approach provides the following benefits:
+Rather than adding helper methods to a controller, sortable-table creates a sort column object. This approach provides the following benefits:
 
 1. More complex sort criteria can be defined for a column. The RailsCasts approach only allows a single column to be sorted. This approach allows additional columns to be involved in the column sort.
 2. The sorting logic is not duplicated across controllers, and controllers don't have to define helper methods.
@@ -15,12 +15,12 @@ Rather than adding helper methods to a controller, sortable-column creates a sor
 ## Installing
 
 ```ruby
-gem 'sortable-column', github: 'caselle/sortable-column'
+gem 'sortable-table', github: 'caselle/sortable-table'
 ```
 
 ## Configuration
 
-Using sort column involves the following steps:
+Using sortable table involves the following steps:
 
 1. Define which columns in your table can be sorted, and how they are sorted.
 2. Using the parameters passed into your controller action, get the current sort column.
@@ -35,12 +35,12 @@ Create sort column definitions which define how each column can be sorted. Creat
 
 ```ruby
 def sort_column
-  date_sort = SortableColumn::SortColumnCustomDefinition.new(
+  date_sort = SortableTable::SortColumnCustomDefinition.new(
     'date',
     asc: 'date asc, number asc',
     desc: 'date desc, number desc')
-  number_sort = SortableColumn::SortColumnDefinition.new('number')
-  sort_table = SortableColumn::SortTable.new([date_sort, number_sort])
+  number_sort = SortableTable::SortColumnDefinition.new('number')
+  sort_table = SortableTable::SortTable.new([date_sort, number_sort])
   sort_table.sort_column(params[:sort], params[:direction])
 end
 ```
@@ -57,11 +57,11 @@ Make the sort column available to the view, it will be used by the ```sort_by```
 
 ### Helper
 
-Include the ```SortableColumn::Sortable``` module which will make the sort_by helper available to your view. You can include it on the application helper or the helper for your controller.
+Include the ```SortableTable::Sortable``` module which will make the sort_by helper available to your view. You can include it on the application helper or the helper for your controller.
 
 ```ruby
 module ApplicationHelper
-  include SortableColumn::Sortable
+  include SortableTable::Sortable
 ```
 
 ### View
@@ -119,7 +119,7 @@ There are two types of sort column definitions: ```SortColumnDefinition``` and `
 
 ```SortColumnDefinition``` simply allows you to pass the column used to sort. Depending on the sort direction the order will simply be "&lt;column> asc" or "&lt;column> desc".
 
-The column should be have the same casing as the database. E.g., if the column is "Timmy", create ```SortableColumn::SortColumnDefinition.new('Timmy')``` not ```SortableColumn::SortColumnDefinition.new('timmy')```.
+The column should be have the same casing as the database. E.g., if the column is "Timmy", create ```SortableTable::SortColumnDefinition.new('Timmy')``` not ```SortableTable::SortColumnDefinition.new('timmy')```.
 
 The column name is the key used by the [SortTable](#sort_table).
 
@@ -128,7 +128,7 @@ The column name is the key used by the [SortTable](#sort_table).
 ```SortColumnCustomDefinition``` allows you to specify any custom order for ascending and descending directions. The first parameter passed when creating a ```SortColumnCustomDefinition``` is the "key" used by the [SortTable](#sort_table).
 
 ```ruby
-date_sort = SortableColumn::SortColumnCustomDefinition.new('date',
+date_sort = SortableTable::SortColumnCustomDefinition.new('date',
   asc: 'date asc, number asc',
   desc: 'date desc, number desc')
 ```
@@ -149,17 +149,17 @@ Additional options that can be passed as well are:
 In the following example, date and number sort column definitions are created. If no sort params are passed to the controller action, the current sort column will be ordered by date ascending.
 
 ```ruby
-date_sort = SortableColumn::SortColumnDefinition.new('date')
-number_sort = SortableColumn::SortColumnDefinition.new('number')
-sort_table = SortableColumn::SortTable.new([date_sort, number_sort])
+date_sort = SortableTable::SortColumnDefinition.new('date')
+number_sort = SortableTable::SortColumnDefinition.new('number')
+sort_table = SortableTable::SortTable.new([date_sort, number_sort])
 ```
 
 In this example, date and number sort column definitions are created, and the default order will be number descending.
 
 ```ruby
-date_sort = SortableColumn::SortColumnDefinition.new('date')
-number_sort = SortableColumn::SortColumnDefinition.new('number')
-sort_table = SortableColumn::SortTable.new([date_sort, number_sort],
+date_sort = SortableTable::SortColumnDefinition.new('date')
+number_sort = SortableTable::SortColumnDefinition.new('number')
+sort_table = SortableTable::SortTable.new([date_sort, number_sort],
   default_column: 'number', default_direction: :desc)
 ```
 
@@ -187,4 +187,4 @@ Generally, a user of ```SortColumn``` will only use the ```order``` attribute. T
 
 ## License
 
-sortable-column is available under the MIT license. See the LICENSE file for more info.
+sortable-table is available under the MIT license. See the LICENSE file for more info.
