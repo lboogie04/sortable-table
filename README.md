@@ -35,8 +35,7 @@ Create sort column definitions which define how each column can be sorted. Creat
 
 ```ruby
 def sort_column
-  date_sort = SortableTable::SortColumnCustomDefinition.new(
-    'date',
+  date_sort = SortableTable::SortColumnCustomDefinition.new('date',
     asc: 'date asc, number asc',
     desc: 'date desc, number desc')
   number_sort = SortableTable::SortColumnDefinition.new('number')
