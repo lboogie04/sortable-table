@@ -1,1 +1,1 @@
-require 'sortable-table'
+require 'sortable_table'
