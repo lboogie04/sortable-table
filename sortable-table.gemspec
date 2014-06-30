@@ -20,7 +20,13 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
+  s.add_dependency 'activesupport', '>= 3.0.0'
+  s.add_dependency 'actionpack', '>= 3.0.0'
+
   s.add_development_dependency 'bundler', '~> 1.5'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rspec-rails'
+  # s.add_development_dependency 'tzinfo'
+  s.add_development_dependency 'tzinfo-data'
+  s.add_development_dependency 'rails'
 end
