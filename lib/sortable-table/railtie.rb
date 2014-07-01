@@ -7,7 +7,7 @@ module SortableTable
       require 'sortable-table/models/sort_table'
       
       ActiveSupport::on_load(:action_view) do
-        ActionView::Base.send :include, SortableTable::ActionViewExtension
+        include SortableTable::ActionViewExtension
       end
     end
   end
