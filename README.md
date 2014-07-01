@@ -22,7 +22,6 @@ Using sortable table involves the following steps:
 2. Using the parameters passed into your controller action, get the current sort column.
 3. Use the current sort column to order your data.
 4. Use the ```sort_by``` helper, to add links to the table header row which allow the table to be re-sorted by those columns.
-5. [TODO] Use the ```hidden_sort_tags``` helper, to keep track of the current sort column and direction.
 
 ### Controller
 
@@ -51,12 +50,6 @@ Make the sort column available to the view, it will be used by the ```sort_by```
 
 ### View
 
-[TODO] Use the ```hidden_sort_tags``` helper to add some hidden field tags to your view to store the current sort column and direction.
-
-```haml
-= hidden_sort_tags @sort_column
-```
-
 Use the ```sort_by``` helper to add links to columns which you want to sort.
 
 ```haml
@@ -82,12 +75,6 @@ Assign a sort column for each table. Use the param prefix when generating the so
 
 ```ruby
 sort_table.sort_column(params[:foo_sort], params[:foo_direction])
-```
-
-[TODO] Pass ```:prefix``` to the ```hidden_sort_tags``` helper.
-
-```haml
-= hidden_sort_tags @foo_sort_column, prefix: 'foo_'
 ```
 
 Pass ```:prefix``` to the ```sort_by helper```.
