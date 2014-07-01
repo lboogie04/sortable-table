@@ -1,7 +1,3 @@
-# Under Development
-
-This gem is currently under development. Extracting code from an application.
-
 # Sortable Table by [Caselle](http://www.caselle.com/)
 
 The sortable-table gem allows you to sort table columns similar to [RailsCasts #228 Sortable Table Columns](http://railscasts.com/episodes/228-sortable-table-columns).
@@ -25,9 +21,8 @@ Using sortable table involves the following steps:
 1. Define which columns in your table can be sorted, and how they are sorted.
 2. Using the parameters passed into your controller action, get the current sort column.
 3. Use the current sort column to order your data.
-4. Include the Sortable module in a helper, which adds the ```sort_by``` helper method to your views.
-5. Use the ```sort_by``` helper, to add links to the table header row which allow the table to be re-sorted by those columns.
-6. Use the ```hidden_sort_tags``` helper, to keep track of the current sort column and direction.
+4. Use the ```sort_by``` helper, to add links to the table header row which allow the table to be re-sorted by those columns.
+5. [TODO] Use the ```hidden_sort_tags``` helper, to keep track of the current sort column and direction.
 
 ### Controller
 
@@ -54,18 +49,9 @@ end
 
 Make the sort column available to the view, it will be used by the ```sort_by``` helper.
 
-### Helper
-
-Include the ```SortableTable::Sortable``` module which will make the sort_by helper available to your view. You can include it on the application helper or the helper for your controller.
-
-```ruby
-module ApplicationHelper
-  include SortableTable::Sortable
-```
-
 ### View
 
-Use the ```hidden_sort_tags``` helper to add some hidden field tags to your view to store the current sort column and direction.
+[TODO] Use the ```hidden_sort_tags``` helper to add some hidden field tags to your view to store the current sort column and direction.
 
 ```haml
 = hidden_sort_tags @sort_column
@@ -98,7 +84,7 @@ Assign a sort column for each table. Use the param prefix when generating the so
 sort_table.sort_column(params[:foo_sort], params[:foo_direction])
 ```
 
-Pass ```:prefix``` to the ```hidden_sort_tags``` helper.
+[TODO] Pass ```:prefix``` to the ```hidden_sort_tags``` helper.
 
 ```haml
 = hidden_sort_tags @foo_sort_column, prefix: 'foo_'
