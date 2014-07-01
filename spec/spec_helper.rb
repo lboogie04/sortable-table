@@ -1,2 +1,2 @@
 require 'rails'
-require 'sortable_table'
+require 'sortable-table'
