@@ -5,7 +5,8 @@ module SortableTable
       title = options.delete(:title) || column.titleize
       prefix = options.delete(:prefix)
       is_current_column = column == current_column.column
-      css_class = is_current_column ? "current #{current_column.direction}" : nil
+      options_class = options.delete(:class)
+      css_class = is_current_column ? "current #{current_column.direction} #{options_class}" : options_class
       direction = is_current_column && current_column.direction == 'asc' ? 'desc' : 'asc'
       link_to title, params.merge("#{prefix}sort" => column,
                                   "#{prefix}direction" => direction,
