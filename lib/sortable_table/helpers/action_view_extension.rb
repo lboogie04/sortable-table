@@ -8,10 +8,15 @@ module SortableTable
       options_class = options.delete(:class)
       css_class = is_current_column ? "current #{current_column.direction} #{options_class}" : options_class
       direction = is_current_column && current_column.direction == 'asc' ? 'desc' : 'asc'
-      link_to title, params.merge("#{prefix}sort" => column,
+      sort_params = { "#{prefix}sort" => column,
                                   "#{prefix}direction" => direction,
-                                  "#{prefix}page" => nil),
-              options.merge( {class: css_class } )
+                                  "#{prefix}page" => nil }
+      if options.has_key?(:route_method)
+        goto = options[:route_method].call sort_params
+      else
+        goto = params.merge( sort_params )
+      end
+      link_to title, goto, options.merge( {class: css_class } )
     end
   end
 end

@@ -12,7 +12,7 @@ module SortableTable
     end
 
     def sort_column(column, direction)
-      column_definition = column_definitions[column] || column_definitions[default_column]
+      column_definition = column_definitions[column] || (column && column_definitions[column.to_sym]) || column_definitions[default_column]
       column_definition.create_sort_column(direction || default_direction.to_s)
     end
   end
