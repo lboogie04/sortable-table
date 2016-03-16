@@ -12,7 +12,7 @@ module SortableTable
                                   "#{prefix}direction" => direction,
                                   "#{prefix}page" => nil }
       if options.has_key?(:route_method)
-        goto = options[:route_method].call sort_params
+        goto = options.delete(:route_method).call sort_params
       else
         goto = params.merge( sort_params )
       end
