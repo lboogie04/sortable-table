@@ -8,6 +8,8 @@ module SortableTable
       options_class = options.delete(:class)
       css_class = is_current_column ? "current #{current_column.direction} #{options_class}" : options_class
       direction = is_current_column && current_column.direction == 'asc' ? 'desc' : 'asc'
+      icon = current_column.direction == 'asc' ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'
+      icon = is_current_column ? icon : ''
       sort_params = { "#{prefix}sort" => column,
                                   "#{prefix}direction" => direction,
                                   "#{prefix}page" => nil }
@@ -16,7 +18,7 @@ module SortableTable
       else
         goto = params.merge( sort_params )
       end
-      link_to title, goto, options.merge( {class: css_class } )
+      link_to "#{title} <span class='#{icon}'></span>".html_safe, goto, options.merge( {class: css_class } )
     end
   end
 end
