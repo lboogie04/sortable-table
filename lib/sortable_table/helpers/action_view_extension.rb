@@ -8,7 +8,7 @@ module SortableTable
       options_class = options.delete(:class)
       css_class = is_current_column ? "current #{current_column.direction} #{options_class}" : options_class
       direction = is_current_column && current_column.direction == 'asc' ? 'desc' : 'asc'
-      icon = current_column.direction == 'asc' ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'
+      icon = current_column.direction == 'asc' ? 'fa-chevron-circle-up fa' : 'fa-chevron-circle-down fa'
       icon = is_current_column ? icon : ''
       sort_params = { "#{prefix}sort" => column,
                                   "#{prefix}direction" => direction,
